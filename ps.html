@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body {
+      background: #dddddd;
+    }
+    #canvas {
+      margin: 10px;
+      background: #fff;
+      border: thin inset #aaaaaa;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="canvas" width="2000" height="1000">
+    canvas not supported
+  </canvas>
+  <script>
+    var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
+    drawGrid(context, 'lightgray', 10, 10);
+
+    function drawGrid(context, color, stepx, stepy) {
+      context.strokeStyle = color;
+      context.lineWidth = 0.5;
+      for (var i = stepx + 0.5; i < context.canvas.width; i += stepx) {
+        context.beginPath();
+        context.moveTo(i, 0);
+        context.lineTo(i, context.canvas.height);
+        context.stroke();
+      }
+      for (var i = stepy + 0.5; i < context.canvas.height; i += stepy) {
+        context.beginPath();
+        context.moveTo(0, i);
+        context.lineTo(context.canvas.width, i);
+        context.stroke();
+      }
+    }
+  </script>
+</body>
+</html>
